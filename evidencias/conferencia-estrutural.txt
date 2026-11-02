@@ -1,0 +1,10 @@
+Conferência de 18/10/2026
+
+index.html: identificadores únicos e 8 referências locais válidas.
+docs/index.html: identificadores únicos e 10 referências locais válidas.
+Seletores fixos do controlador: presentes no HTML.
+CSS: expansão Mobile-first por min-width; imagem referenciada existe.
+SVGs e PNG de imagens: estrutura válida.
+Sintaxe JavaScript: verificada com node --check.
+Testes das regras: 36 aprovados.
+Validação visual e interação em navegador: pendentes.

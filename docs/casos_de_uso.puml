@@ -1,0 +1,39 @@
+@startuml
+left to right direction
+actor Cliente
+actor Atendente
+actor Cozinha
+actor "Gerente / Administrador" as Gerente
+actor "Pagamento Externo" as Externo
+rectangle "Raízes do Nordeste" {
+ usecase "Cadastrar e autenticar" as Conta
+ usecase "Consultar cardápio por unidade" as Menu
+ usecase "Montar e revisar pedido" as Carrinho
+ usecase "Finalizar pedido" as Pedido
+ usecase "Solicitar e receber resultado de pagamento" as Pagamento
+ usecase "Acompanhar pedido" as Status
+ usecase "Consultar e resgatar benefícios" as Fidelidade
+ usecase "Consultar campanhas" as Campanhas
+ usecase "Gerenciar privacidade" as Privacidade
+ usecase "Registrar pedido assistido" as Assistido
+ usecase "Atualizar preparo" as Preparo
+ usecase "Gerenciar unidade e estoque" as Estoque
+ usecase "Consultar indicadores" as Indicadores
+}
+Cliente -- Conta
+Cliente -- Menu
+Cliente -- Carrinho
+Cliente -- Pedido
+Cliente -- Status
+Cliente -- Fidelidade
+Cliente -- Campanhas
+Cliente -- Privacidade
+Atendente -- Menu
+Atendente -- Assistido
+Cozinha -- Preparo
+Cozinha -- Status
+Gerente -- Estoque
+Gerente -- Indicadores
+Externo -- Pagamento
+Pedido ..> Pagamento : <<include>>
+@enduml

@@ -1,0 +1,226 @@
+TAP version 13
+# Subtest: moeda usa centavos e formato brasileiro
+ok 1 - moeda usa centavos e formato brasileiro
+  ---
+  duration_ms: 14.00398
+  type: 'test'
+  ...
+# Subtest: adicionais compõem o preço da unidade do produto
+ok 2 - adicionais compõem o preço da unidade do produto
+  ---
+  duration_ms: 0.241248
+  type: 'test'
+  ...
+# Subtest: subtotal multiplica adicionais e quantidade sem arredondamentos
+ok 3 - subtotal multiplica adicionais e quantidade sem arredondamentos
+  ---
+  duration_ms: 0.158898
+  type: 'test'
+  ...
+# Subtest: sem consentimento não há ganho nem resgate de pontos
+ok 4 - sem consentimento não há ganho nem resgate de pontos
+  ---
+  duration_ms: 0.102188
+  type: 'test'
+  ...
+# Subtest: resgate desconta 500 centavos e consome exatamente 100 pontos
+ok 5 - resgate desconta 500 centavos e consome exatamente 100 pontos
+  ---
+  duration_ms: 0.158964
+  type: 'test'
+  ...
+# Subtest: saldo insuficiente não produz desconto
+ok 6 - saldo insuficiente não produz desconto
+  ---
+  duration_ms: 0.105356
+  type: 'test'
+  ...
+# Subtest: carrinho vazio é impedido
+ok 7 - carrinho vazio é impedido
+  ---
+  duration_ms: 0.414414
+  type: 'test'
+  ...
+# Subtest: unidade fechada impede pedido
+ok 8 - unidade fechada impede pedido
+  ---
+  duration_ms: 0.191864
+  type: 'test'
+  ...
+# Subtest: produto incompatível com unidade é rejeitado
+ok 9 - produto incompatível com unidade é rejeitado
+  ---
+  duration_ms: 0.262942
+  type: 'test'
+  ...
+# Subtest: estoque soma linhas distintas do mesmo produto
+ok 10 - estoque soma linhas distintas do mesmo produto
+  ---
+  duration_ms: 0.464968
+  type: 'test'
+  ...
+# Subtest: produto esgotado é rejeitado
+ok 11 - produto esgotado é rejeitado
+  ---
+  duration_ms: 0.153966
+  type: 'test'
+  ...
+# Subtest: quantidade fracionária e quantidade acima de 20 são rejeitadas
+ok 12 - quantidade fracionária e quantidade acima de 20 são rejeitadas
+  ---
+  duration_ms: 0.353738
+  type: 'test'
+  ...
+# Subtest: adicional não permitido e adicional duplicado são rejeitados
+ok 13 - adicional não permitido e adicional duplicado são rejeitados
+  ---
+  duration_ms: 0.152454
+  type: 'test'
+  ...
+# Subtest: sazonalidade usa calendário e admite demonstração junina
+ok 14 - sazonalidade usa calendário e admite demonstração junina
+  ---
+  duration_ms: 0.340983
+  type: 'test'
+  ...
+# Subtest: agrupamento ignora ordem dos adicionais, preserva observações
+ok 15 - agrupamento ignora ordem dos adicionais, preserva observações
+  ---
+  duration_ms: 0.345631
+  type: 'test'
+  ...
+# Subtest: pedido percorre etapas e só conclui após recebimento
+ok 16 - pedido percorre etapas e só conclui após recebimento
+  ---
+  duration_ms: 0.219967
+  type: 'test'
+  ...
+# Subtest: estoques de unidades e de sessões são independentes
+ok 17 - estoques de unidades e de sessões são independentes
+  ---
+  duration_ms: 0.144378
+  type: 'test'
+  ...
+# Subtest: conta de teste permite acesso com credenciais públicas
+ok 18 - conta de teste permite acesso com credenciais públicas
+  ---
+  duration_ms: 0.980455
+  type: 'test'
+  ...
+# Subtest: login incorreto não cria sessão
+ok 19 - login incorreto não cria sessão
+  ---
+  duration_ms: 0.178962
+  type: 'test'
+  ...
+# Subtest: cadastro fictício cria conta e permite novo acesso na mesma sessão
+ok 20 - cadastro fictício cria conta e permite novo acesso na mesma sessão
+  ---
+  duration_ms: 0.205153
+  type: 'test'
+  ...
+# Subtest: cadastro bloqueia endereço real
+ok 21 - cadastro bloqueia endereço real
+  ---
+  duration_ms: 0.139585
+  type: 'test'
+  ...
+# Subtest: cadastro bloqueia apelido curto
+ok 22 - cadastro bloqueia apelido curto
+  ---
+  duration_ms: 0.147406
+  type: 'test'
+  ...
+# Subtest: cadastro duplicado é rejeitado
+ok 23 - cadastro duplicado é rejeitado
+  ---
+  duration_ms: 0.174209
+  type: 'test'
+  ...
+# Subtest: cadastro aceita somente a senha pública da demonstração
+ok 24 - cadastro aceita somente a senha pública da demonstração
+  ---
+  duration_ms: 0.112682
+  type: 'test'
+  ...
+# Subtest: sair encerra sessão de identidade
+ok 25 - sair encerra sessão de identidade
+  ---
+  duration_ms: 0.14017
+  type: 'test'
+  ...
+# Subtest: contas fictícias não atravessam instâncias
+ok 26 - contas fictícias não atravessam instâncias
+  ---
+  duration_ms: 0.271513
+  type: 'test'
+  ...
+# Subtest: consumidor não altera perfil interno pelo objeto retornado
+ok 27 - consumidor não altera perfil interno pelo objeto retornado
+  ---
+  duration_ms: 0.206946
+  type: 'test'
+  ...
+# Subtest: campanha calcula dez por cento em centavos
+ok 28 - campanha calcula dez por cento em centavos
+  ---
+  duration_ms: 13.271963
+  type: 'test'
+  ...
+# Subtest: cupom ignora caixa e espaços laterais
+ok 29 - cupom ignora caixa e espaços laterais
+  ---
+  duration_ms: 0.332572
+  type: 'test'
+  ...
+# Subtest: campanha respeita teto de dez reais
+ok 30 - campanha respeita teto de dez reais
+  ---
+  duration_ms: 0.236722
+  type: 'test'
+  ...
+# Subtest: cupom abaixo do mínimo é recusado
+ok 31 - cupom abaixo do mínimo é recusado
+  ---
+  duration_ms: 0.211908
+  type: 'test'
+  ...
+# Subtest: cupom inválido é recusado
+ok 32 - cupom inválido é recusado
+  ---
+  duration_ms: 0.118265
+  type: 'test'
+  ...
+# Subtest: cupom incompatível com unidade é recusado
+ok 33 - cupom incompatível com unidade é recusado
+  ---
+  duration_ms: 0.271695
+  type: 'test'
+  ...
+# Subtest: campanha expirada e futura são recusadas
+ok 34 - campanha expirada e futura são recusadas
+  ---
+  duration_ms: 0.280455
+  type: 'test'
+  ...
+# Subtest: campanha não acumula com o resgate de pontos
+ok 35 - campanha não acumula com o resgate de pontos
+  ---
+  duration_ms: 0.227143
+  type: 'test'
+  ...
+# Subtest: desconto nunca produz total negativo
+ok 36 - desconto nunca produz total negativo
+  ---
+  duration_ms: 0.06586
+  type: 'test'
+  ...
+1..36
+# tests 36
+# suites 0
+# pass 36
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 117.937775

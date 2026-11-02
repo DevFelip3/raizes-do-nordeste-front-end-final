@@ -1,0 +1,433 @@
+{
+  "rf": [
+    [
+      "RF01",
+      "Cadastro e autenticação",
+      "Criar conta fictícia, validar dados e demonstrar entrada e saída.",
+      "js/auth.js e aba Conta",
+      "CT01–CT05"
+    ],
+    [
+      "RF02",
+      "Unidade e canal",
+      "Selecionar unidade e canais Web, App, Totem ou Balcão.",
+      "Cabeçalho e cardápio",
+      "CT06, CT24"
+    ],
+    [
+      "RF03",
+      "Cardápio dinâmico",
+      "Respeitar unidade, estoque, cozinha reduzida e sazonalidade.",
+      "js/data.js e js/core.js",
+      "CT07–CT09"
+    ],
+    [
+      "RF04",
+      "Personalização",
+      "Consultar detalhes, adicionais, alergênicos e observação.",
+      "Diálogo do produto",
+      "CT10, CT25"
+    ],
+    [
+      "RF05",
+      "Carrinho e pedido",
+      "Adicionar, alterar, remover e calcular valores em centavos.",
+      "Painel Seu pedido",
+      "CT10–CT12"
+    ],
+    [
+      "RF06",
+      "Pagamento externo",
+      "Simular solicitação desacoplada via Pix ou cartão.",
+      "simulatedGateway em js/app.js",
+      "CT13–CT15"
+    ],
+    [
+      "RF07",
+      "Retorno do pagamento",
+      "Exibir aprovação, recusa ou falha, evitando duplicidade.",
+      "Diálogo de pagamento",
+      "CT13–CT16"
+    ],
+    [
+      "RF08",
+      "Acompanhamento",
+      "Mostrar recebido, preparo, pronto e recebimento confirmado.",
+      "Aba Meus pedidos",
+      "CT17"
+    ],
+    [
+      "RF09",
+      "Fidelidade",
+      "Adesão opcional, acúmulo, resgate e revogação dos pontos.",
+      "Aba Fidelidade",
+      "CT18–CT20"
+    ],
+    [
+      "RF10",
+      "Promoções e campanhas",
+      "Campanha pública com cupom, mínimo, teto, validade e sugestões opcionais.",
+      "Aba Promoções e carrinho",
+      "CT21–CT23"
+    ],
+    [
+      "RF11",
+      "Privacidade",
+      "Escolhas separadas de persistência, fidelidade e sugestões; exclusão.",
+      "Privacidade e respectivas abas",
+      "CT26–CT29"
+    ],
+    [
+      "RF12",
+      "Multicanalidade",
+      "Manter jornada reconhecível em Web, App e Totem.",
+      "Seletor Canal e CSS",
+      "CT24, CT30"
+    ],
+    [
+      "RF13",
+      "Operação integrada",
+      "Representar preparo, gestão local, indicadores e auditoria na modelagem.",
+      "Casos de uso e arquitetura conceitual",
+      "Revisão da modelagem"
+    ]
+  ],
+  "rnf": [
+    [
+      "RNF01",
+      "Mobile-first",
+      "Regras básicas para celular, expandidas com min-width em 400, 760 e 1000 px."
+    ],
+    [
+      "RNF02",
+      "Responsividade",
+      "Revisar 320, 390, 768 e 1440 px sem perda de conteúdo ou rolagem horizontal."
+    ],
+    [
+      "RNF03",
+      "Acessibilidade",
+      "HTML semântico, rótulos, foco visível, diálogos nativos e respeito a movimento reduzido."
+    ],
+    [
+      "RNF04",
+      "Usabilidade multicanal",
+      "Totem com alvos principais de pelo menos 52 px; navegação e retorno consistentes."
+    ],
+    [
+      "RNF05",
+      "Desempenho",
+      "Dados locais, nenhum framework ou fonte remota e uma imagem compartilhada pelo cardápio."
+    ],
+    [
+      "RNF06",
+      "Manutenção",
+      "Separar catálogo, regras puras, autenticação demonstrativa, interface e estilos."
+    ],
+    [
+      "RNF07",
+      "Tolerância a falhas",
+      "Preservar carrinho, estoque e pontos se o provedor recusar ou não confirmar."
+    ],
+    [
+      "RNF08",
+      "Privacidade",
+      "Sem dados reais, conta somente em memória e persistência local apenas autorizada."
+    ],
+    [
+      "RNF09",
+      "Escalabilidade",
+      "Prever API, identidade, serviço de pedidos, estoque transacional e atualizações de status."
+    ],
+    [
+      "RNF10",
+      "Disponibilidade",
+      "Publicação estática com recursos locais; disponibilidade real depende da hospedagem e deve ser medida."
+    ]
+  ],
+  "tests": [
+    [
+      "CT01",
+      "Cadastro válido",
+      "Visitante; novo@exemplo.test; 123456.",
+      "Criar conta de teste.",
+      "Conta criada e sessão demonstrativa iniciada.",
+      "Positivo"
+    ],
+    [
+      "CT02",
+      "Cadastro inválido",
+      "E-mail real ou apelido de um caractere.",
+      "Enviar cadastro.",
+      "Rejeitar com orientação; não criar conta.",
+      "Negativo"
+    ],
+    [
+      "CT03",
+      "Cadastro duplicado",
+      "cliente@exemplo.test.",
+      "Tentar cadastrar novamente.",
+      "Exibir endereço já cadastrado.",
+      "Negativo"
+    ],
+    [
+      "CT04",
+      "Login válido e inválido",
+      "cliente@exemplo.test; senhas 000000 e 123456.",
+      "Tentar ambos os acessos.",
+      "Negar a primeira tentativa e aceitar a segunda.",
+      "Positivo e negativo"
+    ],
+    [
+      "CT05",
+      "Saída da conta",
+      "Sessão ativa com carrinho.",
+      "Sair e limpar sessão.",
+      "Encerrar acesso e apagar dados locais da demonstração.",
+      "Privacidade"
+    ],
+    [
+      "CT06",
+      "Troca de unidade",
+      "Carrinho em Recife.",
+      "Trocar para João Pessoa, cancelar; depois confirmar.",
+      "Cancelar preserva; confirmar limpa carrinho e muda cardápio.",
+      "Positivo e negativo"
+    ],
+    [
+      "CT07",
+      "Unidade fechada",
+      "Salvador.",
+      "Tentar adicionar e finalizar.",
+      "Mostrar fechada; impedir compra.",
+      "Negativo"
+    ],
+    [
+      "CT08",
+      "Estoque e cozinha reduzida",
+      "João Pessoa.",
+      "Examinar bolo e cuscuz com carne.",
+      "Bolo esgotado; cuscuz de carne ausente.",
+      "Negativo"
+    ],
+    [
+      "CT09",
+      "Sazonalidade",
+      "Outubro, controle junino desligado e ligado.",
+      "Comparar canjica; desligar após adicionar.",
+      "Bloquear fora de junho e remover item fora de época.",
+      "Positivo e negativo"
+    ],
+    [
+      "CT10",
+      "Adicionais e total",
+      "2 cuscuzes de carne com queijo adicional.",
+      "Adicionar ao carrinho.",
+      "Subtotal de R$ 50,80 e detalhes corretos.",
+      "Positivo"
+    ],
+    [
+      "CT11",
+      "Quantidade inválida",
+      "Zero, fração ou quantidade acima do estoque.",
+      "Tentar adicionar ou aumentar.",
+      "Impedir quantidade inválida, sem ultrapassar estoque.",
+      "Negativo"
+    ],
+    [
+      "CT12",
+      "Carrinho vazio",
+      "Sem itens.",
+      "Examinar botão de pagamento.",
+      "Botão desabilitado; nenhuma transação.",
+      "Negativo"
+    ],
+    [
+      "CT13",
+      "Aprovação",
+      "Carrinho válido; provedor Aprovado.",
+      "Confirmar pagamento.",
+      "Criar um pedido, descontar estoque e limpar carrinho.",
+      "Positivo"
+    ],
+    [
+      "CT14",
+      "Recusa",
+      "Carrinho válido; provedor Recusado.",
+      "Confirmar pagamento.",
+      "Exibir recusa e preservar carrinho, estoque e pontos.",
+      "Negativo"
+    ],
+    [
+      "CT15",
+      "Falha de comunicação",
+      "Provedor Falha de comunicação.",
+      "Confirmar e tentar novamente.",
+      "Exibir falha, preservar estado e permitir nova tentativa.",
+      "Negativo"
+    ],
+    [
+      "CT16",
+      "Envio duplicado",
+      "Pagamento em processamento.",
+      "Tentar clicar novamente ou fechar.",
+      "Bloquear controles durante espera; gerar um pedido.",
+      "Negativo"
+    ],
+    [
+      "CT17",
+      "Status e retirada",
+      "Pedido aprovado.",
+      "Aguardar 12 s e 30 s; confirmar recebimento.",
+      "Recebido, em preparo, pronto e concluído.",
+      "Positivo"
+    ],
+    [
+      "CT18",
+      "Acúmulo de pontos",
+      "Adesão ativa; 5 cuscuzes de carne.",
+      "Aprovar R$ 109,50.",
+      "Acumular 109 pontos apenas após a aprovação.",
+      "Positivo"
+    ],
+    [
+      "CT19",
+      "Resgate de pontos",
+      "Saldo de 109; 2 cafés.",
+      "Resgatar 100 pontos e aprovar.",
+      "Pagar R$ 6,80; ganhar 6 pontos; saldo final 15.",
+      "Positivo"
+    ],
+    [
+      "CT20",
+      "Revogação de fidelidade",
+      "Saldo existente.",
+      "Revogar adesão e fazer novo pedido.",
+      "Apagar saldo e não acumular novos pontos.",
+      "Privacidade"
+    ],
+    [
+      "CT21",
+      "Cupom válido",
+      "Subtotal R$ 50; RAIZES10; Recife.",
+      "Aplicar cupom.",
+      "Desconto de R$ 5 e total de R$ 45.",
+      "Positivo"
+    ],
+    [
+      "CT22",
+      "Cupom inválido",
+      "Código errado, subtotal R$ 29,99 ou data expirada.",
+      "Aplicar cupom.",
+      "Recusar e explicar o motivo.",
+      "Negativo"
+    ],
+    [
+      "CT23",
+      "Não cumulatividade",
+      "Pontos disponíveis e RAIZES10 aplicado.",
+      "Examinar resgate e finalizar.",
+      "Somente desconto da campanha; não gastar pontos.",
+      "Regra de negócio"
+    ],
+    [
+      "CT24",
+      "Canais",
+      "Web, App, Totem e Balcão.",
+      "Alternar e criar pedido.",
+      "Preservar fluxo; registrar canal; Totem ampliar botões.",
+      "Usabilidade"
+    ],
+    [
+      "CT25",
+      "Observação maliciosa",
+      "Texto <img src=x onerror=alert(1)>.",
+      "Adicionar produto com observação.",
+      "Exibir texto literal, sem executar HTML.",
+      "Segurança"
+    ],
+    [
+      "CT26",
+      "Persistência negada",
+      "Sem autorizar armazenamento.",
+      "Adicionar item e recarregar.",
+      "Iniciar sessão vazia.",
+      "Privacidade"
+    ],
+    [
+      "CT27",
+      "Persistência autorizada",
+      "Autorizar; adicionar item com observação.",
+      "Recarregar página.",
+      "Restaurar carrinho sem a observação livre.",
+      "Privacidade"
+    ],
+    [
+      "CT28",
+      "Excluir dados",
+      "Carrinho, pedidos e pontos existentes.",
+      "Apagar meus dados locais e confirmar.",
+      "Limpar dados e restaurar demonstração.",
+      "Privacidade"
+    ],
+    [
+      "CT29",
+      "Sugestões opcionais",
+      "Histórico com café; consentimento desmarcado.",
+      "Marcar e depois desmarcar sugestões.",
+      "Mostrar e ocultar recomendação; campanha pública permanece.",
+      "Privacidade"
+    ],
+    [
+      "CT30",
+      "Tela e teclado",
+      "320, 390, 768 e 1440 px; teclado.",
+      "Navegar, abrir diálogos e usar Tab/Escape.",
+      "Sem corte horizontal; foco visível e diálogo operável.",
+      "Responsividade e acessibilidade"
+    ]
+  ],
+  "references": [
+    [
+      "UNINTER",
+      "Projeto Multidisciplinar Orientações e Estudo de Caso Rede Raízes do Nordeste",
+      "2026",
+      "Material da disciplina, revisão 0.3 final, arquivo fornecido pelo aluno."
+    ],
+    [
+      "UNINTER",
+      "Roteiro de Atividade Prática Projeto Multidisciplinar Trilha Front End",
+      "2026",
+      "Material da disciplina, revisão 0.6, arquivo fornecido pelo aluno."
+    ],
+    [
+      "MDN WEB DOCS",
+      "Responsive web design",
+      "s.d.",
+      "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design"
+    ],
+    [
+      "MDN WEB DOCS",
+      "HTML dialog element",
+      "s.d.",
+      "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog"
+    ],
+    [
+      "W3C",
+      "Web Content Accessibility Guidelines WCAG 2.2",
+      "2024",
+      "https://www.w3.org/TR/WCAG22/"
+    ],
+    [
+      "BRASIL",
+      "Lei número 13.709 de 14 de agosto de 2018 Lei Geral de Proteção de Dados Pessoais",
+      "2018",
+      "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709compilado.htm"
+    ],
+    [
+      "OPENAI",
+      "Imagens ilustrativas de culinária nordestina produzidas com ChatGPT",
+      "2026",
+      "Geração de imagem em 18 out. 2026. Arquivo assets/cardapio-atlas.png. Prompt e identificação em assets/PROMPT_IMAGENS.txt."
+    ]
+  ]
+}

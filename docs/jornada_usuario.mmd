@@ -1,0 +1,12 @@
+flowchart TD
+  A[Escolher canal e unidade] --> B[Consultar cardápio disponível]
+  B --> C[Personalizar itens e revisar carrinho]
+  C --> D[Aplicar cupom ou resgatar pontos]
+  D --> E[Solicitar pagamento externo]
+  E --> F{Resultado do provedor}
+  F -->|Aprovado| G[Pedido recebido]
+  F -->|Recusado ou falha| H[Exibir erro e preservar carrinho]
+  H --> C
+  G --> I[Em preparo]
+  I --> J[Pronto para retirada]
+  J --> K[Confirmar recebimento]

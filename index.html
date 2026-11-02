@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#254c3c">
+  <meta name="description" content="Protótipo acadêmico de pedidos da rede Raízes do Nordeste.">
+  <title>Raízes do Nordeste • Seu próximo sabor</title>
+  <link rel="icon" href="assets/marca.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Scripts que permitem abrir o projeto diretamente, sem compilação. -->
+  <script defer src="js/data.js"></script>
+  <script defer src="js/core.js"></script>
+  <script defer src="js/auth.js"></script>
+  <script defer src="js/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Pular para o conteúdo</a>
+  <div class="demo-strip">PROJETO ACADÊMICO <span>•</span> Pedidos e pagamentos são simulados.</div>
+  <header class="header">
+    <a class="brand" href="#cardapio" aria-label="Raízes do Nordeste, início"><img src="assets/marca.svg" alt="" width="44" height="44"><span>Raízes<span class="brand-small">DO NORDESTE</span></span></a>
+    <nav class="navigation" aria-label="Navegação principal">
+      <button class="nav-button active" data-view="cardapio" aria-current="page">Cardápio</button>
+      <button class="nav-button" data-view="pedidos">Meus pedidos <span id="order-count" class="nav-count" hidden>0</span></button>
+      <button class="nav-button" data-view="fidelidade">Fidelidade</button>
+      <button class="nav-button" data-view="promocoes">Promoções</button>
+    </nav>
+    <button id="account-button" class="button secondary account-button" data-view="conta">Entrar</button>
+    <button id="privacy-open" class="icon-button" aria-label="Abrir preferências de privacidade" title="Privacidade">◈</button>
+  </header>
+  <div class="context-bar">
+    <label class="unit-control"><span class="small-label">SUA UNIDADE</span><select id="unit-select" aria-label="Unidade do pedido"></select></label>
+    <span id="unit-status" class="availability"></span>
+    <label class="channel-control"><span class="small-label">CANAL</span><select id="channel-select" aria-label="Canal de atendimento"><option value="web">Web</option><option value="app">App</option><option value="totem">Totem</option><option value="balcao">Balcão</option></select></label>
+  </div>
+
+  <main id="main" tabindex="-1">
+    <section id="view-cardapio" class="view" aria-labelledby="menu-title">
+      <div class="hero">
+        <div class="hero-copy"><span class="eyebrow">FEITO COM AFETO. SERVIDO COM RAÍZES.</span><h1 id="menu-title">Um pedacinho do<br>Nordeste no seu dia.</h1><p>Cuscuz quentinho, tapioca caprichada e aquele café.<br class="desktop-break"> Escolha seu sabor e retire na unidade.</p><a class="button primary" href="#menu-section">Explorar o cardápio <span aria-hidden="true">↗</span></a><div class="hero-foot"><span aria-hidden="true">✦</span> Tradição que aproxima.</div></div>
+        <img class="hero-art food-photo photo-hero" src="images/cuscuz-cafe.jpg" alt="Cuscuz com café, imagem ilustrativa gerada com IA" width="640" height="640" fetchpriority="high" decoding="async">
+      </div>
+      <div class="menu-layout" id="menu-section">
+        <div class="menu-main">
+          <div class="section-heading"><div><span class="eyebrow">ESCOLHA, COMBINE, APROVEITE</span><h2>Nosso cardápio</h2><p id="menu-subtitle"></p></div><span class="mini-mark" aria-hidden="true">✷</span></div>
+          <label class="search-box"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="O que você quer provar hoje?" maxlength="80" aria-label="Buscar produto no cardápio"></label>
+          <div id="categories" class="categories" aria-label="Filtrar por categoria"></div>
+          <p id="menu-results" class="result-label" aria-live="polite"></p>
+          <div id="products" class="product-grid"></div>
+          <p class="image-note">Imagens ilustrativas geradas com IA para este projeto.</p>
+        </div>
+        <aside id="cart-panel" class="cart-panel" aria-labelledby="cart-title">
+          <div class="cart-heading"><h2 id="cart-title">Seu pedido</h2><span id="cart-count" class="count-badge">0</span></div>
+          <p id="cart-unit" class="muted"></p>
+          <div id="cart-items"></div>
+          <form id="coupon-form" class="coupon-form"><label for="coupon-code">Cupom de desconto</label><div><input id="coupon-code" maxlength="24" placeholder="Ex.: RAIZES10" autocomplete="off"><button class="button secondary" type="submit">Aplicar</button></div><p id="coupon-feedback" role="status" class="small"></p><button id="coupon-remove" type="button" class="text-button" hidden>Remover cupom</button></form>
+          <div id="cart-totals"></div>
+          <button id="checkout-open" class="button primary full" disabled>Continuar para pagamento <span aria-hidden="true">→</span></button>
+          <p class="cart-foot">Retirada na loja • Sem taxa de entrega</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="view-pedidos" class="view" hidden aria-labelledby="orders-title"><div class="page-heading"><span class="eyebrow">DA NOSSA COZINHA PARA VOCÊ</span><h1 id="orders-title">Meus pedidos</h1><p>Veja seu número de retirada e acompanhe a preparação simulada.</p></div><div id="orders-list" class="orders-list"></div></section>
+    <section id="view-fidelidade" class="view" hidden aria-labelledby="loyalty-title"><div class="page-heading"><span class="eyebrow">BOM VOLTAR. MELHOR AINDA ACUMULAR.</span><h1 id="loyalty-title">Clube Raízes</h1><p>Um carinho a mais em cada visita.</p></div><div class="loyalty-layout"><div class="loyalty-card"><span class="eyebrow">SEU SALDO DEMONSTRATIVO</span><div class="points-display"><span id="points">0</span><span>pontos</span></div><p>A cada R$ 1 pago, você ganha 1 ponto.<br>Junte 100 pontos e troque por R$ 5 de desconto.</p><span class="loyalty-decoration" aria-hidden="true">✳</span></div><div class="surface loyalty-info"><h2>Um clube no seu ritmo</h2><p>A participação é opcional. Você pode fazer pedidos sem aderir ao programa.</p><label class="check-row"><input id="loyalty-consent" type="checkbox"><span>Quero participar do Clube Raízes e autorizo o uso do meu histórico de consumo nesta demonstração para contabilizar pontos.</span></label><p id="loyalty-status" class="muted"></p><button id="loyalty-revoke" class="button secondary">Revogar adesão e apagar pontos</button><p class="small">Regras propostas para o protótipo. Nenhum CPF, idade ou contato é solicitado. Não há campanhas reais ou envio de mensagens.</p></div></div></section>
+    <section id="view-promocoes" class="view" hidden aria-labelledby="campaign-title"><div class="page-heading"><span class="eyebrow">SABORES COM BENEFÍCIOS</span><h1 id="campaign-title">Promoções e campanhas</h1><p>As ofertas públicas estão disponíveis mesmo sem consentimento para personalização.</p></div><div class="campaign-layout"><article class="surface campaign-card"><span class="eyebrow">CAMPANHA DEMONSTRATIVA</span><h2>10% para saborear mais</h2><p>Use <strong>RAIZES10</strong> em pedidos a partir de R$ 30. Desconto máximo de R$ 10, nas unidades Recife e João Pessoa.</p><p class="small">Validade de 01/01/2026 a 31/12/2026. Não cumulativo com o resgate de pontos. Estoque e horário da unidade continuam valendo.</p><button id="campaign-apply" class="button primary">Aplicar ao meu pedido</button></article><div class="surface"><h2>Recomendações opcionais</h2><label class="check-row"><input id="marketing-consent" type="checkbox"><span>Autorizo usar meu histórico de pedidos desta sessão para exibir sugestões de campanhas aqui na tela.</span></label><p id="marketing-status" class="muted"></p><div id="campaign-recommendation"></div><p class="small">Não enviamos e-mails, mensagens ou dados a terceiros. A escolha pode ser desmarcada a qualquer momento.</p></div></div></section>
+    <section id="view-conta" class="view" hidden aria-labelledby="account-title"><div class="page-heading"><span class="eyebrow">SEU ESPAÇO NA RAÍZES</span><h1 id="account-title">Conta demonstrativa</h1><p>Use apenas dados fictícios. O cadastro e o acesso simulam as telas de uma integração com um serviço de identidade.</p></div><div id="account-session" class="surface" hidden></div><div id="account-forms" class="account-layout"><form id="login-form" class="surface" novalidate><h2>Entrar</h2><p class="small">Conta de teste: cliente@exemplo.test<br>Senha pública: 123456</p><label class="field">E-mail fictício<input name="email" type="email" placeholder="cliente@exemplo.test" autocomplete="off" maxlength="80" required></label><label class="field">Senha de demonstração<input name="code" type="password" placeholder="123456" autocomplete="off" maxlength="6" inputmode="numeric" required></label><p id="login-feedback" class="feedback" role="alert"></p><button class="button primary" type="submit">Entrar na demonstração</button></form><form id="register-form" class="surface" novalidate><h2>Criar conta de teste</h2><label class="field">Apelido fictício<input name="alias" maxlength="40" placeholder="Ex.: Visitante" autocomplete="off" required></label><label class="field">E-mail fictício<input name="email" type="email" placeholder="visitante@exemplo.test" maxlength="80" autocomplete="off" required></label><label class="field">Senha pública da demonstração<input name="code" type="password" placeholder="Use 123456" maxlength="6" autocomplete="off" required></label><p class="small">A conta existe só na memória desta página e desaparece ao recarregar. Não use nome, e-mail ou senha reais. Você também pode comprar como visitante.</p><p id="register-feedback" class="feedback" role="alert"></p><button class="button primary" type="submit">Cadastrar e entrar</button></form></div></section>
+  </main>
+
+  <footer class="footer"><div class="footer-top"><span class="footer-brand">Raízes do Nordeste</span><span>Tradição no sabor. Cuidado em cada escolha.</span></div><div class="footer-bottom"><span>Protótipo Front-end • HTML, CSS e JavaScript</span><a href="docs/index.html">Documentação e referências</a><button id="privacy-footer" class="text-button">Privacidade e dados</button></div>
+    <!-- Ferramentas separadas da jornada do cliente, para apresentar casos negativos. -->
+    <details class="demo-tools"><summary>Controles da demonstração</summary><div class="demo-controls"><label class="check-row"><input id="june-toggle" type="checkbox"><span>Simular temporada junina</span></label><button id="reset-demo" class="button secondary">Reiniciar demonstração</button><p>Em outubro, os produtos juninos ficam fora de temporada. A unidade Salvador está fechada no cenário fictício. Os estoques são locais a este navegador.</p><div id="audit-log"></div></div></details>
+  </footer>
+  <button id="mobile-cart" class="mobile-cart" hidden>Ver pedido <span id="mobile-cart-count">0 itens</span><b id="mobile-cart-total">R$ 0,00</b></button>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <noscript><p class="surface">Ative o JavaScript para utilizar o cardápio, o carrinho e o pagamento simulado.</p></noscript>
+
+  <!-- Diálogos nativos oferecem foco contido, fechamento por Escape e semântica acessível. -->
+  <dialog id="product-dialog" aria-labelledby="product-dialog-title"><button class="dialog-close" data-close="product-dialog" aria-label="Fechar detalhes do produto">×</button><form id="product-form"><div id="product-detail"></div><div class="dialog-actions"><button type="button" class="button secondary" data-close="product-dialog">Voltar</button><button id="product-add" type="submit" class="button primary">Adicionar ao pedido</button></div></form></dialog>
+  <dialog id="checkout-dialog" aria-labelledby="checkout-title"><button class="dialog-close" data-close="checkout-dialog" aria-label="Fechar pagamento">×</button><span class="eyebrow">FALTA SÓ UM PASSO</span><h2 id="checkout-title">Finalizar pedido</h2><p class="muted">Pagamento de demonstração. Nenhuma cobrança será feita.</p><form id="checkout-form"><div id="checkout-summary" class="checkout-summary"></div><label class="field">Como deseja receber?<select id="fulfillment"><option value="pickup">Retirada rápida na unidade</option><option value="local">Consumir na unidade</option></select></label><fieldset class="payment-methods"><legend>Forma de pagamento</legend><label><input type="radio" name="payment" value="pix" checked> Pix</label><label><input type="radio" name="payment" value="card"> Cartão via serviço externo</label></fieldset><p class="small">O provedor externo é simulado. Não digite dados de cartão ou informações pessoais.</p><label class="field">Resultado do provedor (para testes)<select id="gateway-result"><option value="approved">Aprovado</option><option value="declined">Recusado</option><option value="timeout">Falha de comunicação</option></select></label><p id="payment-feedback" class="feedback" role="status" aria-live="polite"></p><button id="pay-button" class="button primary full" type="submit">Confirmar pagamento simulado</button></form></dialog>
+  <dialog id="privacy-dialog" aria-labelledby="privacy-title"><button class="dialog-close" data-close="privacy-dialog" aria-label="Fechar privacidade">×</button><span class="eyebrow">SUAS ESCOLHAS IMPORTAM</span><h2 id="privacy-title">Privacidade e dados</h2><p>Você pode comprar como visitante. O cadastro demonstrativo aceita somente dados fictícios e existe apenas na memória desta página. Os pedidos e os pontos ficam apenas nesta sessão, a menos que você escolha salvar neste navegador.</p><label class="check-row"><input id="storage-consent" type="checkbox"><span>Autorizo salvar carrinho, preferências, pedidos demonstrativos e saldo de pontos neste navegador para continuar depois.</span></label><p class="small">As observações dos produtos não são salvas. Não usamos cookies, rastreadores ou serviços externos. As autorizações de fidelidade e recomendações de campanhas são separadas e podem ser revogadas nas respectivas abas.</p><p id="storage-status" class="muted"></p><div class="dialog-actions"><button id="erase-data" type="button" class="button danger">Apagar meus dados locais</button><button type="button" class="button primary" data-close="privacy-dialog">Concluir</button></div></dialog>
+  <dialog id="unit-dialog" aria-labelledby="unit-dialog-title"><h2 id="unit-dialog-title">Trocar de unidade?</h2><p>Os produtos e estoques variam por unidade. O carrinho atual será esvaziado para iniciar o pedido na nova loja.</p><div class="dialog-actions"><button id="unit-cancel" class="button secondary">Manter unidade</button><button id="unit-confirm" class="button primary">Trocar e limpar carrinho</button></div></dialog>
+  <dialog id="reset-dialog" aria-labelledby="reset-title"><h2 id="reset-title">Reiniciar demonstração?</h2><p>Isso apaga os pedidos, pontos e preferências deste protótipo e restaura o estoque fictício.</p><div class="dialog-actions"><button class="button secondary" data-close="reset-dialog">Voltar</button><button id="reset-confirm" class="button danger">Apagar e reiniciar</button></div></dialog>
+</body>
+</html>
